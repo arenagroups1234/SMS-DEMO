@@ -348,21 +348,29 @@ export default function PortalTeachers() {
         const qualificationProofFile = map.qualificationProofFile || ""; // proof image URL from mapping if any
         
         let classesArr = [];
-        if (u.classes) {
+        if (Array.isArray(u.classes)) {
+          classesArr = u.classes;
+        } else if (typeof u.classes === "string" && u.classes) {
           classesArr = u.classes.split(", ").filter(Boolean);
+        } else if (u.className) {
+          classesArr = typeof u.className === "string" ? u.className.split(", ").filter(Boolean) : [u.className];
         } else if (map.classes) {
-          classesArr = map.classes;
+          classesArr = Array.isArray(map.classes) ? map.classes : [map.classes];
         } else {
-          classesArr = ["10th A"];
+          classesArr = ["9th A", "10th A"];
         }
 
         let subjectsArr = [];
-        if (u.subjects) {
+        if (Array.isArray(u.subjects)) {
+          subjectsArr = u.subjects;
+        } else if (typeof u.subjects === "string" && u.subjects) {
           subjectsArr = u.subjects.split(", ").filter(Boolean);
+        } else if (u.subject) {
+          subjectsArr = typeof u.subject === "string" ? u.subject.split(", ").filter(Boolean) : [u.subject];
         } else if (map.subjects) {
-          subjectsArr = map.subjects;
+          subjectsArr = Array.isArray(map.subjects) ? map.subjects : [map.subjects];
         } else {
-          subjectsArr = ["Science"];
+          subjectsArr = ["Mathematics"];
         }
 
         return {
