@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Login   from "../pages/Auth/Login";
 import Landing from "../pages/Landing/Landing";
@@ -195,6 +195,35 @@ function AppRoutes() {
 
                     {/* ── Driver Portal ── */}
                     <Route path="/driver-portal/:driverId" element={<DriverHome />} />
+
+                    {/* ── Route Redirect Helpers & Fallbacks ── */}
+                    <Route path="/school" element={<Navigate to="/school-portal/school-1" replace />} />
+                    <Route path="/school/" element={<Navigate to="/school-portal/school-1" replace />} />
+                    <Route path="/school-portal" element={<Navigate to="/school-portal/school-1" replace />} />
+                    <Route path="/school-portal/" element={<Navigate to="/school-portal/school-1" replace />} />
+
+                    <Route path="/hostel" element={<Navigate to="/hostel-portal/school-1" replace />} />
+                    <Route path="/hostel/" element={<Navigate to="/hostel-portal/school-1" replace />} />
+                    <Route path="/hostel-portal" element={<Navigate to="/hostel-portal/school-1" replace />} />
+                    <Route path="/hostel-portal/" element={<Navigate to="/hostel-portal/school-1" replace />} />
+
+                    <Route path="/teacher" element={<Navigate to="/teacher-portal/teacher-1" replace />} />
+                    <Route path="/teacher/" element={<Navigate to="/teacher-portal/teacher-1" replace />} />
+                    <Route path="/teacher-portal" element={<Navigate to="/teacher-portal/teacher-1" replace />} />
+                    <Route path="/teacher-portal/" element={<Navigate to="/teacher-portal/teacher-1" replace />} />
+
+                    <Route path="/parent" element={<Navigate to="/parent-portal/student-1" replace />} />
+                    <Route path="/parent/" element={<Navigate to="/parent-portal/student-1" replace />} />
+                    <Route path="/parent-portal" element={<Navigate to="/parent-portal/student-1" replace />} />
+                    <Route path="/parent-portal/" element={<Navigate to="/parent-portal/student-1" replace />} />
+
+                    <Route path="/driver" element={<Navigate to="/driver-portal/driver-1" replace />} />
+                    <Route path="/driver/" element={<Navigate to="/driver-portal/driver-1" replace />} />
+                    <Route path="/driver-portal" element={<Navigate to="/driver-portal/driver-1" replace />} />
+                    <Route path="/driver-portal/" element={<Navigate to="/driver-portal/driver-1" replace />} />
+
+                    {/* Catch-all 404 redirect */}
+                    <Route path="*" element={<Navigate to="/" replace />} />
 
                 </Routes>
             </AuthProvider>
