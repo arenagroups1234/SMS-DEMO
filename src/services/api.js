@@ -1116,10 +1116,17 @@ function getStored(key, defaultData) {
       localStorage.setItem(key, JSON.stringify(defaultData));
       return defaultData;
     }
-    const parsed = JSON.parse(item);
-    if (Array.isArray(parsed) && parsed.length === 0 && Array.isArray(defaultData) && defaultData.length > 0) {
+    let parsed = JSON.parse(item);
+    if (!Array.isArray(parsed) || parsed.length === 0) {
       localStorage.setItem(key, JSON.stringify(defaultData));
       return defaultData;
+    }
+    if (key === "sms_users_demo" && Array.isArray(defaultData)) {
+      const hasTeachers = parsed.some(u => u.role === "teacher");
+      if (!hasTeachers) {
+        parsed = defaultData;
+        try { localStorage.setItem(key, JSON.stringify(defaultData)); } catch (e) {}
+      }
     }
     return parsed;
   } catch (e) {
@@ -1344,10 +1351,11 @@ async function mockApiResolver(endpoint, options = {}) {
     return { success: true, data: found };
   }
 
-  if (path === "/users") {
+  if (path === "/users" || path === "/teachers" || path === "/staff") {
     let users = getStored("sms_users_demo", DUMMY_USERS);
-    if (params.role) {
-      users = users.filter(u => u.role === params.role);
+    const targetRole = params.role || (path === "/teachers" ? "teacher" : null);
+    if (targetRole) {
+      users = users.filter(u => u.role === targetRole);
     }
     if (method === "POST") {
       const body = JSON.parse(options.body || "{}");
