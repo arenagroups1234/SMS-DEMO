@@ -1122,7 +1122,9 @@ function getStored(key, defaultData) {
     }
     if (key === "sms_users_demo" && Array.isArray(defaultData)) {
       const hasTeachers = parsed.some(u => u.role === "teacher");
-      if (!hasTeachers) {
+      const hasDrivers = parsed.some(u => u.role === "driver");
+      const hasStudents = parsed.some(u => u.role === "student");
+      if (!hasTeachers || !hasDrivers || !hasStudents) {
         parsed = defaultData;
         try { localStorage.setItem(key, JSON.stringify(defaultData)); } catch (e) {}
       }
@@ -1452,8 +1454,11 @@ async function mockApiResolver(endpoint, options = {}) {
   }
 
   if (path === "/buses/drivers") {
-    const users = getStored("sms_users_demo", DUMMY_USERS);
-    const drivers = users.filter(u => u.role === "driver");
+    let users = getStored("sms_users_demo", DUMMY_USERS);
+    let drivers = users.filter(u => u.role === "driver");
+    if (!drivers || drivers.length === 0) {
+      drivers = DUMMY_USERS.filter(u => u.role === "driver");
+    }
     return { success: true, data: drivers };
   }
 
@@ -1473,18 +1478,27 @@ async function mockApiResolver(endpoint, options = {}) {
   }
 
   if (path === "/buses/students") {
-    const users = getStored("sms_users_demo", DUMMY_USERS);
-    const students = users.filter(u => u.role === "student");
+    let users = getStored("sms_users_demo", DUMMY_USERS);
+    let students = users.filter(u => u.role === "student");
+    if (!students || students.length === 0) {
+      students = DUMMY_USERS.filter(u => u.role === "student");
+    }
     return { success: true, data: students };
   }
 
   if (path === "/buses/live" || path.startsWith("/buses/trip")) {
-    const buses = getStored("sms_buses_demo", DUMMY_BUSES);
+    let buses = getStored("sms_buses_demo", DUMMY_BUSES);
+    if (!buses || buses.length === 0) {
+      buses = DUMMY_BUSES;
+    }
     return { success: true, data: buses };
   }
 
   if (path.startsWith("/buses")) {
-    const buses = getStored("sms_buses_demo", DUMMY_BUSES);
+    let buses = getStored("sms_buses_demo", DUMMY_BUSES);
+    if (!buses || buses.length === 0) {
+      buses = DUMMY_BUSES;
+    }
     return { success: true, data: buses };
   }
 
