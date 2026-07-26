@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import "tailwindcss";
+@import 'react-calendar/dist/Calendar.css';
+
+@theme {
+
+  --font-sans: "Roboto", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Roboto", Georgia, serif;
+  --color-primary: #1B365D;
+  --color-primary-dark: #112240;
+  --color-secondary: #F4EFE6;
+  --color-accent-gold: #C5A059;
+  --color-accent-blue: #3B82F6;
+  --color-success: #0F5132;
+  --color-warning: #D97706;
+  --color-danger: #842029;
+  --color-text-color: #1F2937;
+  --color-text-light: #6B7280;
+  --color-border: #E5E7EB;
+  --color-light-gray: #FAF9F6;
+  --color-medium-gray: #9CA3AF;
+}
+
+@variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  html, body, #root {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+  }
+
+  body {
+    @apply font-sans text-text-color bg-light-gray select-none;
+  }
+
+  /* Prevent elements from showing the I-beam (text-selection/keyboard) cursor by default */
+  div, section, h1, h2, h3, h4, h5, h6, span, label, p, table, tr, td, th, header, footer, aside, main {
+    cursor: default;
+  }
+
+  /* Ensure interactive elements show the standard pointer/hand cursor */
+  a, button, select, option, [role="button"], .cursor-pointer {
+    cursor: pointer !important;
+  }
+
+  /* Ensure input fields and textareas retain the correct keyboard typing text cursor */
+  input, textarea, [contenteditable="true"] {
+    user-select: text !important;
+    cursor: text !important;
+  }
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Global premium styling for native Choose File upload buttons */
+input[type="file"]::file-selector-button {
+  background-color: #E0F2FE; /* Sky 100 */
+  color: #0369A1; /* Sky 700 */
+  border: 1px solid #BAE6FD; /* Sky 200 */
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer !important;
+  transition: all 0.15s ease-in-out;
+  margin-right: 8px;
+  font-family: inherit;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background-color: #0284C7; /* Sky 600 */
+  color: #ffffff;
+  border-color: #0284C7;
+}
+
+input[type="file"]::file-selector-button:active {
+  background-color: #0369A1; /* Sky 700 */
+}
+
+/* Premium action buttons matching first image */
+.btn-action-view {
+  background-color: #E6F4EA !important; /* light green */
+  color: #137333 !important; /* dark green */
+  border-radius: 6px !important;
+  width: 28px !important;
+  height: 28px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.15s ease-in-out !important;
+  border: none !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+}
+.btn-action-view:hover {
+  background-color: #137333 !important;
+  color: #ffffff !important;
+}
+
+.btn-action-edit {
+  background-color: #EEF2FF !important; /* light indigo */
+  color: #4F46E5 !important; /* indigo 600 */
+  border-radius: 6px !important;
+  width: 28px !important;
+  height: 28px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.15s ease-in-out !important;
+  border: none !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+}
+.btn-action-edit:hover {
+  background-color: #4F46E5 !important;
+  color: #ffffff !important;
+}
+
+.btn-action-delete {
+  background-color: #FCE8E6 !important; /* light red */
+  color: #C5221F !important; /* dark red */
+  border-radius: 6px !important;
+  width: 28px !important;
+  height: 28px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.15s ease-in-out !important;
+  border: none !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+}
+.btn-action-delete:hover {
+  background-color: #C5221F !important;
+  color: #ffffff !important;
+}
+
+.btn-action-login {
+  background-color: #E8F0FE !important; /* light blue */
+  color: #1A73E8 !important; /* dark blue */
+  border-radius: 6px !important;
+  width: 28px !important;
+  height: 28px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.15s ease-in-out !important;
+  border: none !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+}
+.btn-action-login:hover {
+  background-color: #1A73E8 !important;
+  color: #ffffff !important;
+}

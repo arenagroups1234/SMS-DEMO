@@ -1,0 +1,1 @@
+export default function Events() { return <div style={{padding:40,color:'#fff',fontFamily:"'Inter',sans-serif"}}><h1 style={{marginBottom:8}}>Events</h1><p style={{color:'#64748B'}}>This page is under construction.</p></div>; }

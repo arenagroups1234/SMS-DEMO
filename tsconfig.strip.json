@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "jsx": "preserve",
+    "noEmit": false,
+    "outDir": "./src_jsx",
+    "esModuleInterop": true,
+    "allowJs": true,
+    "removeComments": false
+  },
+  "include": ["src/**/*"]
+}
