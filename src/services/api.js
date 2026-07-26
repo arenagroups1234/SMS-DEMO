@@ -9,7 +9,7 @@ const BASE_URL = "http://localhost:5000/api";
 
 
 // ─── Core Fetch Wrapper ───────────────────────────────────────
-async function apiFetch(endpoint, options = {}) {
+export async function apiFetch(endpoint, options = {}) {
   return mockApiResolver(endpoint, options);
 }
 
