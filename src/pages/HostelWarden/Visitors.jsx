@@ -377,46 +377,55 @@ export default function Visitors() {
                 <td colSpan="7" style={{ padding: "40px", textAlign: "center", color: "#64748B" }}>No visitors logged today.</td>
               </tr>
             ) : (
-              visitors.map(vis => (
-                <tr key={vis.id} style={{ borderBottom: "1px solid #F1F5F9", transition: "background 0.15s" }}>
-                  <td style={{ padding: "18px 24px" }}>
-                    <div style={{ fontWeight: 700, color: "#0F172A", fontSize: 14.5 }}>{vis.name}</div>
-                    <div style={{ fontSize: 12, color: "#64748B", marginTop: 2 }}>{vis.phone}</div>
-                  </td>
-                  <td style={{ padding: "18px 24px", fontSize: 14, color: "#334155" }}>{vis.relation}</td>
-                  <td style={{ padding: "18px 24px", fontSize: 14, fontWeight: 700, color: "#1E293B" }}>{vis.studentName}</td>
-                  <td style={{ padding: "18px 24px", fontSize: 13.5, color: "#475569", maxWidth: 180, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }} title={vis.purpose}>{vis.purpose}</td>
-                  <td style={{ padding: "18px 24px" }}>
-                    <div style={{ fontSize: 12.5, color: "#1E293B", fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>
-                      <Clock size={12} style={{ color: "#2563EB" }} /> In: {vis.entryTime}
-                    </div>
-                    {vis.exitTime ? (
-                      <div style={{ fontSize: 12.5, color: "#64748B", marginTop: 4, display: "flex", alignItems: "center", gap: 4 }}>
-                        <Clock size={12} style={{ color: "#94A3B8" }} /> Out: {vis.exitTime}
+              visitors.map(vis => {
+                const vName = vis.name || vis.visitorName || "Guest Visitor";
+                const vPhone = vis.phone || vis.visitorPhone || "+91 9829011111";
+                const vRelation = vis.relation || "Father";
+                const vStudent = vis.studentName || "Resident Student";
+                const vPurpose = vis.purpose || "Personal Visit";
+                const vEntry = vis.entryTime || vis.checkIn || "10:00 AM";
+                const vExit = vis.exitTime || vis.checkOut || "";
+                const vStatus = vis.status || (vExit ? "Checked Out" : "Inside");
+                return (
+                  <tr key={vis.id} style={{ borderBottom: "1px solid #F1F5F9", transition: "background 0.15s" }}>
+                    <td style={{ padding: "18px 24px" }}>
+                      <div style={{ fontWeight: 700, color: "#0F172A", fontSize: 14.5 }}>{vName}</div>
+                      <div style={{ fontSize: 12, color: "#64748B", marginTop: 2 }}>{vPhone}</div>
+                    </td>
+                    <td style={{ padding: "18px 24px", fontSize: 14, color: "#334155" }}>{vRelation}</td>
+                    <td style={{ padding: "18px 24px", fontSize: 14, fontWeight: 700, color: "#1E293B" }}>{vStudent}</td>
+                    <td style={{ padding: "18px 24px", fontSize: 13.5, color: "#475569", maxWidth: 180, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }} title={vPurpose}>{vPurpose}</td>
+                    <td style={{ padding: "18px 24px" }}>
+                      <div style={{ fontSize: 12.5, color: "#1E293B", fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>
+                        <Clock size={12} style={{ color: "#2563EB" }} /> In: {vEntry}
                       </div>
-                    ) : (
-                      <div style={{ fontSize: 12, color: "#D97706", fontStyle: "italic", marginTop: 4, display: "flex", alignItems: "center", gap: 4 }}>
-                        <ShieldAlert size={12} /> Still Inside
-                      </div>
-                    )}
-                  </td>
-                  <td style={{ padding: "18px 24px" }}>
-                    <span style={{
-                      fontSize: 11,
-                      fontWeight: 800,
-                      padding: "4px 10px",
-                      borderRadius: 8,
-                      background: vis.status === "Inside" ? "#FFF4E5" : "#ECFDF5",
-                      color: vis.status === "Inside" ? "#B45309" : "#047857",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: 4
-                    }}>
-                      {vis.status === "Inside" ? <UserCheck size={12} /> : <UserMinus size={12} />}
-                      {vis.status.toUpperCase()}
-                    </span>
-                  </td>
-                  <td style={{ padding: "18px 24px", display: "flex", gap: 8, alignItems: "center" }}>
+                      {vExit ? (
+                        <div style={{ fontSize: 12.5, color: "#64748B", marginTop: 4, display: "flex", alignItems: "center", gap: 4 }}>
+                          <Clock size={12} style={{ color: "#94A3B8" }} /> Out: {vExit}
+                        </div>
+                      ) : (
+                        <div style={{ fontSize: 12, color: "#D97706", fontStyle: "italic", marginTop: 4, display: "flex", alignItems: "center", gap: 4 }}>
+                          <ShieldAlert size={12} /> Still Inside
+                        </div>
+                      )}
+                    </td>
+                    <td style={{ padding: "18px 24px" }}>
+                      <span style={{
+                        fontSize: 11,
+                        fontWeight: 800,
+                        padding: "4px 10px",
+                        borderRadius: 8,
+                        background: vStatus === "Inside" ? "#FFF4E5" : "#ECFDF5",
+                        color: vStatus === "Inside" ? "#B45309" : "#047857",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: 4
+                      }}>
+                        {vStatus === "Inside" ? <UserCheck size={12} /> : <UserMinus size={12} />}
+                        {vStatus.toUpperCase()}
+                      </span>
+                    </td>
+                    <td style={{ padding: "18px 24px", display: "flex", gap: 8, alignItems: "center" }}>
                     {vis.status === "Inside" ? (
                       <button
                         onClick={() => handleCheckoutVisitor(vis.id)}
@@ -471,8 +480,9 @@ export default function Visitors() {
                     </button>
                   </td>
                 </tr>
-              ))
-            )}
+              );
+            })
+          )}
           </tbody>
         </table>
       </div>

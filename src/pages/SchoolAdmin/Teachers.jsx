@@ -868,18 +868,21 @@ export default function PortalTeachers() {
   };
 
   const filteredTeachers = teachers.filter(item => {
-    const formattedId = `SCH-${item.id.slice(0, 5).toUpperCase()}`;
-    const matchesSearch = item.name.toLowerCase().includes(searchName.toLowerCase()) ||
-                         formattedId.toLowerCase().includes(searchName.toLowerCase());
+    if (!item) return false;
+    const itemId = String(item.id || item.teacherId || "");
+    const formattedId = `SCH-${itemId.slice(0, 5).toUpperCase()}`;
+    const nameStr = (item.name || item.teacherName || "").toLowerCase();
+    const searchStr = (searchName || "").toLowerCase();
+    const matchesSearch = nameStr.includes(searchStr) || formattedId.toLowerCase().includes(searchStr);
     const matchesStatus = filterStatus === "All" || (item.status || "Active") === filterStatus;
-    const matchesClass = filterClass === "All" || (item.classes || []).includes(filterClass);
-    const matchesSubject = filterSubject === "All" || (item.subjects || []).includes(filterSubject);
+    const matchesClass = filterClass === "All" || (item.classes || [item.class]).includes(filterClass);
+    const matchesSubject = filterSubject === "All" || (item.subjects || [item.subject]).includes(filterSubject);
     const matchesQual = filterQual === "All" || (() => {
       const quals = item.qualifications || [];
       if (quals.length > 0) {
-        return quals.some(q => q.name && q.name.toLowerCase().includes(filterQual.toLowerCase()));
+        return quals.some(q => q && q.name && String(q.name).toLowerCase().includes((filterQual || "").toLowerCase()));
       }
-      return (item.qualification || "").toLowerCase().includes(filterQual.toLowerCase());
+      return (item.qualification || "").toLowerCase().includes((filterQual || "").toLowerCase());
     })();
     return matchesSearch && matchesStatus && matchesClass && matchesSubject && matchesQual;
   });
