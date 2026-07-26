@@ -6,7 +6,7 @@
 
 const BASE_URL = "http://localhost:5000/api";
 
-export function seedLocalStorageDb() {}
+
 
 // ─── Core Fetch Wrapper ───────────────────────────────────────
 async function apiFetch(endpoint, options = {}) {
@@ -1116,8 +1116,14 @@ function getStored(key, defaultData) {
       localStorage.setItem(key, JSON.stringify(defaultData));
       return defaultData;
     }
-    return JSON.parse(item);
+    const parsed = JSON.parse(item);
+    if (Array.isArray(parsed) && parsed.length === 0 && Array.isArray(defaultData) && defaultData.length > 0) {
+      localStorage.setItem(key, JSON.stringify(defaultData));
+      return defaultData;
+    }
+    return parsed;
   } catch (e) {
+    try { localStorage.setItem(key, JSON.stringify(defaultData)); } catch (err) {}
     return defaultData;
   }
 }
@@ -1127,6 +1133,40 @@ function setStored(key, data) {
     localStorage.setItem(key, JSON.stringify(data));
   } catch (e) {}
 }
+
+export function seedLocalStorageDb() {
+  try {
+    getStored("sms_schools_demo", DUMMY_SCHOOLS);
+    getStored("sms_users_demo", DUMMY_USERS);
+    getStored("sms_plans_demo", DUMMY_PLANS);
+    getStored("sms_classes_demo", DUMMY_CLASSES);
+    getStored("sms_subjects_demo", DUMMY_SUBJECTS);
+    getStored("sms_exams_demo", DUMMY_EXAMS);
+    getStored("sms_notices_demo", DUMMY_NOTICES);
+    getStored("sms_books_demo", DUMMY_BOOKS);
+    getStored("sms_book_categories_demo", DUMMY_BOOK_CATEGORIES);
+    getStored("sms_issued_books_demo", DUMMY_ISSUED_BOOKS);
+    getStored("sms_homeworks_demo", DUMMY_HOMEWORKS);
+    getStored("sms_assignments_demo", DUMMY_ASSIGNMENTS);
+    getStored("sms_attendances_demo", DUMMY_ATTENDANCES);
+    getStored("sms_timetables_demo", DUMMY_TIMETABLES);
+    getStored("sms_hostels_demo", DUMMY_HOSTELS);
+    getStored("sms_hostel_rooms_demo", DUMMY_HOSTEL_ROOMS);
+    getStored("sms_hostel_inventory_demo", DUMMY_HOSTEL_INVENTORY);
+    getStored("sms_hostel_damages_demo", DUMMY_HOSTEL_DAMAGES);
+    getStored("sms_hostel_payments_demo", DUMMY_HOSTEL_PAYMENTS);
+    getStored("sms_hostel_maintenance_demo", DUMMY_HOSTEL_MAINTENANCE);
+    getStored("sms_hostel_visitors_demo", DUMMY_HOSTEL_VISITORS);
+    getStored("sms_biometric_devices_demo", DUMMY_BIOMETRIC_DEVICES);
+    getStored("sms_biometric_logs_demo", DUMMY_BIOMETRIC_LOGS);
+    getStored("sms_events_demo", DUMMY_EVENTS);
+    getStored("sms_buses_demo", DUMMY_BUSES);
+  } catch (e) {}
+}
+
+try {
+  seedLocalStorageDb();
+} catch (e) {}
 
 async function mockApiResolver(endpoint, options = {}) {
   const method = (options.method || "GET").toUpperCase();
