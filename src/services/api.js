@@ -1120,15 +1120,47 @@ function getStored(key, defaultData) {
       localStorage.setItem(key, JSON.stringify(defaultData));
       return defaultData;
     }
+
     if (key === "sms_users_demo" && Array.isArray(defaultData)) {
-      const hasTeachers = parsed.some(u => u.role === "teacher");
-      const hasDrivers = parsed.some(u => u.role === "driver");
-      const hasStudents = parsed.some(u => u.role === "student");
-      if (!hasTeachers || !hasDrivers || !hasStudents) {
+      const defaultTeachers = defaultData.filter(u => u.role === "teacher");
+      const defaultDrivers = defaultData.filter(u => u.role === "driver");
+      const defaultStudents = defaultData.filter(u => u.role === "student");
+
+      let updated = false;
+      const existingTeachers = parsed.filter(u => u.role === "teacher");
+      if (existingTeachers.length === 0) {
+        parsed = [...parsed, ...defaultTeachers];
+        updated = true;
+      }
+      const existingDrivers = parsed.filter(u => u.role === "driver");
+      if (existingDrivers.length === 0) {
+        parsed = [...parsed, ...defaultDrivers];
+        updated = true;
+      }
+      const existingStudents = parsed.filter(u => u.role === "student");
+      if (existingStudents.length === 0) {
+        parsed = [...parsed, ...defaultStudents];
+        updated = true;
+      }
+      if (updated) {
+        try { localStorage.setItem(key, JSON.stringify(parsed)); } catch (e) {}
+      }
+    }
+
+    if (key === "sms_events_demo" && Array.isArray(defaultData)) {
+      if (parsed.length === 0 || !parsed[0].venue || !parsed[0].startDate) {
         parsed = defaultData;
         try { localStorage.setItem(key, JSON.stringify(defaultData)); } catch (e) {}
       }
     }
+
+    if (key === "sms_hostel_visitors_demo" && Array.isArray(defaultData)) {
+      if (parsed.length === 0 || !parsed[0].name) {
+        parsed = defaultData;
+        try { localStorage.setItem(key, JSON.stringify(defaultData)); } catch (e) {}
+      }
+    }
+
     return parsed;
   } catch (e) {
     try { localStorage.setItem(key, JSON.stringify(defaultData)); } catch (err) {}
@@ -1367,8 +1399,17 @@ const DUMMY_EVENTS = [
   if (path === "/users" || path === "/teachers" || path === "/staff") {
     let users = getStored("sms_users_demo", DUMMY_USERS);
     const targetRole = params.role || (path === "/teachers" ? "teacher" : null);
+    let filteredUsers = users;
     if (targetRole) {
-      users = users.filter(u => u.role === targetRole);
+      filteredUsers = users.filter(u => u.role === targetRole);
+      if (filteredUsers.length === 0) {
+        const defaultRoleUsers = DUMMY_USERS.filter(u => u.role === targetRole);
+        if (defaultRoleUsers.length > 0) {
+          filteredUsers = defaultRoleUsers;
+          const merged = [...users, ...defaultRoleUsers];
+          setStored("sms_users_demo", merged);
+        }
+      }
     }
     if (method === "POST") {
       const body = JSON.parse(options.body || "{}");
@@ -1378,7 +1419,7 @@ const DUMMY_EVENTS = [
       setStored("sms_users_demo", allUsers);
       return { success: true, message: "User created", data: newUser };
     }
-    return { success: true, data: users, meta: { total: users.length } };
+    return { success: true, data: filteredUsers, meta: { total: filteredUsers.length } };
   }
 
   if (path.startsWith("/users/")) {
