@@ -472,8 +472,13 @@ export default function Allotments() {
   };
 
   const filteredAllotments = allotments.filter(al => {
-    const matchesSearch = al.studentName.toLowerCase().includes(searchQuery.toLowerCase()) || al.studentId.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesStatus = statusFilter === "All" || al.status === statusFilter;
+    if (!al) return false;
+    const name = (al.studentName || al.name || "").toLowerCase();
+    const stId = (al.studentId || al.id || "").toLowerCase();
+    const q = (searchQuery || "").toLowerCase();
+    const matchesSearch = name.includes(q) || stId.includes(q);
+    const statusVal = al.status || "Active";
+    const matchesStatus = statusFilter === "All" || statusVal === statusFilter;
     return matchesSearch && matchesStatus;
   });
 
@@ -571,35 +576,43 @@ export default function Allotments() {
                 <td colSpan="7" style={{ padding: "40px", textAlign: "center", color: "#64748B" }}>No allotments found.</td>
               </tr>
             ) : (
-              filteredAllotments.map(al => (
-                <tr key={al.id} style={{ borderBottom: "1px solid #F1F5F9", transition: "background 0.15s" }}>
-                  <td style={{ padding: "18px 24px" }}>
-                    <div style={{ fontWeight: 700, color: "#0F172A", fontSize: 14.5 }}>{al.studentName}</div>
-                    <div style={{ fontSize: 12, color: "#64748B", marginTop: 2 }}>{al.studentId}</div>
-                  </td>
-                  <td style={{ padding: "18px 24px", fontSize: 14, color: "#334155" }}>{al.hostelName}</td>
-                  <td style={{ padding: "18px 24px" }}>
-                    <span style={{ background: "#EEF2FF", color: "#4F46E5", padding: "4px 10px", borderRadius: 8, fontSize: 12.5, fontWeight: 700 }}>Room {al.roomNumber}</span>
-                  </td>
-                  <td style={{ padding: "18px 24px", fontSize: 14, color: "#475569" }}>{al.checkInDate}</td>
-                  <td style={{ padding: "18px 24px", fontSize: 14, fontWeight: 700, color: "#0F172A" }}>₹{al.rent.toLocaleString()}</td>
-                  <td style={{ padding: "18px 24px" }}>
-                    <span style={{
-                      fontSize: 11,
-                      fontWeight: 800,
-                      padding: "4px 10px",
-                      borderRadius: 8,
-                      background: al.status === "Active" ? "#ECFDF5" : "#FEF2F2",
-                      color: al.status === "Active" ? "#047857" : "#EF4444",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: 4
-                    }}>
-                      {al.status === "Active" ? <CheckCircle2 size={12} /> : <XCircle size={12} />}
-                      {al.status.toUpperCase()}
-                    </span>
-                  </td>
-                  <td style={{ padding: "18px 24px", display: "flex", gap: 8, alignItems: "center" }}>
+              filteredAllotments.map(al => {
+                const sName = al.studentName || al.name || "Student";
+                const sId = al.studentId || al.id || "";
+                const hName = al.hostelName || al.block || "Block A - Boys Hostel";
+                const rNum = al.roomNumber || al.roomNo || "101";
+                const date = al.checkInDate || al.allotmentDate || "2026-07-01";
+                const rentVal = Number(al.rent || al.rentAmount || al.amount || 0);
+                const statusVal = al.status || "Active";
+                return (
+                  <tr key={al.id} style={{ borderBottom: "1px solid #F1F5F9", transition: "background 0.15s" }}>
+                    <td style={{ padding: "18px 24px" }}>
+                      <div style={{ fontWeight: 700, color: "#0F172A", fontSize: 14.5 }}>{sName}</div>
+                      <div style={{ fontSize: 12, color: "#64748B", marginTop: 2 }}>{sId}</div>
+                    </td>
+                    <td style={{ padding: "18px 24px", fontSize: 14, color: "#334155" }}>{hName}</td>
+                    <td style={{ padding: "18px 24px" }}>
+                      <span style={{ background: "#EEF2FF", color: "#4F46E5", padding: "4px 10px", borderRadius: 8, fontSize: 12.5, fontWeight: 700 }}>Room {rNum}</span>
+                    </td>
+                    <td style={{ padding: "18px 24px", fontSize: 14, color: "#475569" }}>{date}</td>
+                    <td style={{ padding: "18px 24px", fontSize: 14, fontWeight: 700, color: "#0F172A" }}>₹{rentVal.toLocaleString()}</td>
+                    <td style={{ padding: "18px 24px" }}>
+                      <span style={{
+                        fontSize: 11,
+                        fontWeight: 800,
+                        padding: "4px 10px",
+                        borderRadius: 8,
+                        background: statusVal === "Active" ? "#ECFDF5" : "#FEF2F2",
+                        color: statusVal === "Active" ? "#047857" : "#EF4444",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: 4
+                      }}>
+                        {statusVal === "Active" ? <CheckCircle2 size={12} /> : <XCircle size={12} />}
+                        {statusVal.toUpperCase()}
+                      </span>
+                    </td>
+                    <td style={{ padding: "18px 24px", display: "flex", gap: 8, alignItems: "center" }}>
                     {al.status === "Active" ? (
                       <button
                         onClick={() => handleCheckOut(al.id)}
@@ -672,8 +685,9 @@ export default function Allotments() {
                     </button>
                   </td>
                 </tr>
-              ))
-            )}
+              );
+            })
+          )}
           </tbody>
         </table>
       </div>

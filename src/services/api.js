@@ -1047,12 +1047,18 @@ const DUMMY_HOSTEL_INVENTORY = [
   { id: "inv-5", name: "High Speed Ceiling Fans 1200mm", category: "Electricals", totalStock: 80, utilized: 76, damaged: 2, available: 2, schoolId: "school-1" }
 ];
 
+const DUMMY_HOSTELS = [
+  { id: "1", name: "Block A - Boys Hostel", type: "Boys", capacity: 50, occupied: 45, wardenName: "Mr. Rajesh Sharma", phone: "9829011111", status: "Active", schoolId: "school-1" },
+  { id: "2", name: "Block B - Girls Hostel", type: "Girls", capacity: 40, occupied: 35, wardenName: "Mrs. Sunita Kapoor", phone: "9829022222", status: "Active", schoolId: "school-1" },
+  { id: "3", name: "Block C - Junior Hostel", type: "Junior", capacity: 30, occupied: 25, wardenName: "Mr. Vikram Singh", phone: "9829033333", status: "Active", schoolId: "school-1" }
+];
+
 const DUMMY_HOSTEL_ROOMS = [
-  { id: "room-1", roomNumber: "101", block: "Block A", type: "Deluxe Twin (AC)", capacity: 2, occupied: 2, rentAmount: 65000, status: "Occupied", schoolId: "school-1" },
-  { id: "room-2", roomNumber: "102", block: "Block A", type: "Standard Triple (Non-AC)", capacity: 3, occupied: 2, rentAmount: 45000, status: "Available", schoolId: "school-1" },
-  { id: "room-3", roomNumber: "201", block: "Block B", type: "Single Executive (AC)", capacity: 1, occupied: 1, rentAmount: 90000, status: "Occupied", schoolId: "school-1" },
-  { id: "room-4", roomNumber: "202", block: "Block B", type: "Quad Studio", capacity: 4, occupied: 3, rentAmount: 40000, status: "Available", schoolId: "school-1" },
-  { id: "room-5", roomNumber: "301", block: "Block C", type: "Premium Suite (AC)", capacity: 2, occupied: 1, rentAmount: 75000, status: "Available", schoolId: "school-1" }
+  { id: "room-1", hostelId: "1", roomNumber: "101", block: "Block A", type: "Deluxe Twin (AC)", capacity: 2, occupied: 2, rentAmount: 65000, rent: 65000, floor: "1st Floor", status: "Occupied", schoolId: "school-1" },
+  { id: "room-2", hostelId: "1", roomNumber: "102", block: "Block A", type: "Standard Triple (Non-AC)", capacity: 3, occupied: 2, rentAmount: 45000, rent: 45000, floor: "1st Floor", status: "Available", schoolId: "school-1" },
+  { id: "room-3", hostelId: "2", roomNumber: "201", block: "Block B", type: "Single Executive (AC)", capacity: 1, occupied: 1, rentAmount: 90000, rent: 90000, floor: "2nd Floor", status: "Occupied", schoolId: "school-1" },
+  { id: "room-4", hostelId: "2", roomNumber: "202", block: "Block B", type: "Quad Studio", capacity: 4, occupied: 3, rentAmount: 40000, rent: 40000, floor: "2nd Floor", status: "Available", schoolId: "school-1" },
+  { id: "room-5", hostelId: "3", roomNumber: "301", block: "Block C", type: "Premium Suite (AC)", capacity: 2, occupied: 1, rentAmount: 75000, rent: 75000, floor: "3rd Floor", status: "Available", schoolId: "school-1" }
 ];
 
 const DUMMY_BUSES = [
@@ -1061,6 +1067,46 @@ const DUMMY_BUSES = [
   { id: "bus-3", busNumber: "BUS-03", vehicleNumber: "MP-09-CA-3003", driverName: "Mahendra Singh", driverPhone: "9988776633", gpsDeviceId: "IMEI-880033", lat: 24.6000, lng: 73.7300, speed: 0, isTripActive: false, schoolId: "school-1" },
   { id: "bus-4", busNumber: "BUS-04", vehicleNumber: "DL-01-GA-4004", driverName: "Vikram Rathore", driverPhone: "9988776622", gpsDeviceId: "IMEI-880044", lat: 24.6100, lng: 73.7400, speed: 0, isTripActive: false, schoolId: "school-1" },
   { id: "bus-5", busNumber: "BUS-05", vehicleNumber: "PB-65-BA-5005", driverName: "Gurpreet Singh", driverPhone: "9988776611", gpsDeviceId: "IMEI-880055", lat: 24.6200, lng: 73.7500, speed: 0, isTripActive: false, schoolId: "school-1" }
+];
+
+const DUMMY_EVENTS = [
+  { id: "ev-1", title: "Annual Science & Innovation Expo 2026", description: "Inter-school robotics, AI, and green energy model exhibition.", date: "2026-08-15", time: "09:00 AM - 04:00 PM", location: "Auditorium Main Hall", category: "Academic", organizer: "Science Department", status: "Upcoming", schoolId: "school-1" },
+  { id: "ev-2", title: "Inter-House Athletics & Football Tournament", description: "Track & field sprints, high jump, and inter-house football championship.", date: "2026-08-25", time: "08:00 AM - 05:00 PM", location: "School Sports Ground", category: "Sports", organizer: "Physical Education Dept", status: "Upcoming", schoolId: "school-1" },
+  { id: "ev-3", title: "Independence Day Cultural Celebration", description: "Flag hoisting, patriotic songs, classical dance, and drama performances.", date: "2026-08-15", time: "07:30 AM - 11:30 AM", location: "Central Quadrangle", category: "Cultural", organizer: "Cultural Committee", status: "Scheduled", schoolId: "school-1" },
+  { id: "ev-4", title: "Teachers' Day Felicitation & Award Ceremony", description: "Special student-led program honoring faculty achievements.", date: "2026-09-05", time: "10:00 AM - 01:00 PM", location: "Subhash Auditorium", category: "Celebration", organizer: "Student Council", status: "Upcoming", schoolId: "school-1" },
+  { id: "ev-5", title: "Parent-Teacher Interactive Symposium", description: "Comprehensive discussion on holistic student growth and academic feedback.", date: "2026-09-20", time: "09:00 AM - 02:00 PM", location: "Main Academic Block", category: "Meeting", organizer: "School Administration", status: "Upcoming", schoolId: "school-1" }
+];
+
+const DUMMY_BIOMETRIC_DEVICES = [
+  { id: "bio-dev-1", deviceName: "Main Gate Biometric Scanner 01", location: "Main Entrance", ipAddress: "192.168.1.150", status: "Online", lastSync: "2026-07-26 23:40", totalLogsToday: 342, schoolId: "school-1" },
+  { id: "bio-dev-2", deviceName: "Academic Block Facial Terminal", location: "Block A Lobby", ipAddress: "192.168.1.151", status: "Online", lastSync: "2026-07-26 23:42", totalLogsToday: 512, schoolId: "school-1" },
+  { id: "bio-dev-3", deviceName: "Hostel Entry RFID & Fingerprint", location: "Hostel Gate 1", ipAddress: "192.168.1.152", status: "Online", lastSync: "2026-07-26 23:38", totalLogsToday: 189, schoolId: "school-1" },
+  { id: "bio-dev-4", deviceName: "Sports Complex Gate Scanner", location: "Stadium West", ipAddress: "192.168.1.153", status: "Offline", lastSync: "2026-07-26 20:15", totalLogsToday: 95, schoolId: "school-1" },
+  { id: "bio-dev-5", deviceName: "Staff Room Attendance Terminal", location: "Staff Wing", ipAddress: "192.168.1.154", status: "Online", lastSync: "2026-07-26 23:44", totalLogsToday: 48, schoolId: "school-1" }
+];
+
+const DUMMY_BIOMETRIC_LOGS = [
+  { id: "log-1", userId: "student-1", userName: "Aarav Sharma", userRole: "Student", className: "9th A", deviceName: "Main Gate Scanner 01", timestamp: "2026-07-26 08:15:22", time: "08:15 AM", date: "2026-07-26", status: "Present", mode: "Fingerprint", schoolId: "school-1" },
+  { id: "log-2", userId: "student-2", userName: "Diya Patel", userRole: "Student", className: "9th A", deviceName: "Academic Block Lobby", timestamp: "2026-07-26 08:20:10", time: "08:20 AM", date: "2026-07-26", status: "Present", mode: "Facial Recognition", schoolId: "school-1" },
+  { id: "log-3", userId: "teacher-1", userName: "Dr. Vikramaditya Sharma", userRole: "Teacher", className: "Staff Wing", deviceName: "Staff Room Terminal", timestamp: "2026-07-26 08:05:45", time: "08:05 AM", date: "2026-07-26", status: "Present", mode: "RFID Card", schoolId: "school-1" },
+  { id: "log-4", userId: "student-3", userName: "Rohan Gupta", userRole: "Student", className: "10th B", deviceName: "Main Gate Scanner 01", timestamp: "2026-07-26 08:35:12", time: "08:35 AM", date: "2026-07-26", status: "Late", mode: "Fingerprint", schoolId: "school-1" },
+  { id: "log-5", userId: "student-4", userName: "Ishaan Verma", userRole: "Student", className: "10th A", deviceName: "Hostel Gate 1", timestamp: "2026-07-26 08:12:00", time: "08:12 AM", date: "2026-07-26", status: "Present", mode: "Facial Recognition", schoolId: "school-1" }
+];
+
+const DUMMY_TIMETABLES = [
+  { id: "tt-1", className: "9th A", day: "Monday", period: "1st Period (09:00 - 09:45 AM)", subject: "Mathematics", teacherName: "Dr. Vikramaditya Sharma", roomNo: "Room 101", schoolId: "school-1" },
+  { id: "tt-2", className: "9th A", day: "Monday", period: "2nd Period (09:45 - 10:30 AM)", subject: "Physics", teacherName: "Prof. Ananya Deshmukh", roomNo: "Lab 02", schoolId: "school-1" },
+  { id: "tt-3", className: "9th A", day: "Monday", period: "3rd Period (10:45 - 11:30 AM)", subject: "Chemistry", teacherName: "Dr. Rajeshwar Verma", roomNo: "Lab 01", schoolId: "school-1" },
+  { id: "tt-4", className: "9th A", day: "Monday", period: "4th Period (11:30 - 12:15 PM)", subject: "English Literature", teacherName: "Mrs. Sunita Choudhary", roomNo: "Room 101", schoolId: "school-1" },
+  { id: "tt-5", className: "9th A", day: "Monday", period: "5th Period (01:00 - 01:45 PM)", subject: "Computer Science", teacherName: "Er. Dharmendra Singh", roomNo: "IT Lab 1", schoolId: "school-1" }
+];
+
+const DUMMY_ATTENDANCES = [
+  { id: "att-1", studentId: "student-1", studentName: "Aarav Sharma", className: "9th A", date: "2026-07-26", status: "Present", teacherName: "Dr. Vikramaditya Sharma", schoolId: "school-1" },
+  { id: "att-2", studentId: "student-2", studentName: "Diya Patel", className: "9th A", date: "2026-07-26", status: "Present", teacherName: "Dr. Vikramaditya Sharma", schoolId: "school-1" },
+  { id: "att-3", studentId: "student-3", studentName: "Rohan Gupta", className: "10th B", date: "2026-07-26", status: "Late", teacherName: "Mrs. Sunita Choudhary", schoolId: "school-1" },
+  { id: "att-4", studentId: "student-4", studentName: "Ishaan Verma", className: "10th A", date: "2026-07-26", status: "Present", teacherName: "Er. Dharmendra Singh", schoolId: "school-1" },
+  { id: "att-5", studentId: "student-5", studentName: "Ananya Roy", className: "9th B", date: "2026-07-26", status: "Absent", teacherName: "Prof. Ananya Deshmukh", schoolId: "school-1" }
 ];
 
 function getStored(key, defaultData) {
@@ -1083,14 +1129,30 @@ function setStored(key, data) {
 }
 
 async function mockApiResolver(endpoint, options = {}) {
+  const method = (options.method || "GET").toUpperCase();
+  const urlObj = new URL(endpoint, "http://dummy.local");
+  const path = urlObj.pathname.replace("/api", "");
+  const params = Object.fromEntries(urlObj.searchParams.entries());
+
+  await new Promise(r => setTimeout(r, 20));
+
+  if (path === "/hostels") {
+    const data = getStored("sms_hostels_demo", DUMMY_HOSTELS);
+    return { success: true, data };
+  }
+
+  if (path === "/hostel-rooms" || path === "/hostel_rooms") {
+    const data = getStored("sms_hostel_rooms_demo", DUMMY_HOSTEL_ROOMS);
+    return { success: true, data };
+  }
 
   if (path === "/hostel-students" || path === "/hostel_students") {
     const defaultHostelStudents = [
-      { id: "hs-1", name: "Aarav Sharma", studentId: "student-1", hostelName: "Ganga Boys Hostel", roomNumber: "101", block: "Block A", parentName: "Rajesh Sharma", phone: "9829011111", bloodGroup: "O+", lockerNo: "LK-101", status: "Active", schoolId: "school-1" },
-      { id: "hs-2", name: "Diya Patel", studentId: "student-2", hostelName: "Kaveri Girls Hostel", roomNumber: "102", block: "Block A", parentName: "Ketan Patel", phone: "9829022222", bloodGroup: "A+", lockerNo: "LK-102", status: "Active", schoolId: "school-1" },
-      { id: "hs-3", name: "Rohan Gupta", studentId: "student-3", hostelName: "Ganga Boys Hostel", roomNumber: "201", block: "Block B", parentName: "Sanjay Gupta", phone: "9829033333", bloodGroup: "B+", lockerNo: "LK-201", status: "Active", schoolId: "school-1" },
-      { id: "hs-4", name: "Ishaan Verma", studentId: "student-4", hostelName: "Yamuna Boys Hostel", roomNumber: "202", block: "Block B", parentName: "Vikram Verma", phone: "9829044444", bloodGroup: "AB+", lockerNo: "LK-202", status: "Active", schoolId: "school-1" },
-      { id: "hs-5", name: "Ananya Roy", studentId: "student-5", hostelName: "Kaveri Girls Hostel", roomNumber: "301", block: "Block C", parentName: "Debabrata Roy", phone: "9829055555", bloodGroup: "O-", lockerNo: "LK-301", status: "Active", schoolId: "school-1" }
+      { id: "hs-1", name: "Aarav Sharma", studentId: "student-1", hostelName: "Block A - Boys Hostel", roomNumber: "101", block: "Block A", parentName: "Rajesh Sharma", phone: "9829011111", bloodGroup: "O+", lockerNo: "LK-101", status: "Active", schoolId: "school-1" },
+      { id: "hs-2", name: "Diya Patel", studentId: "student-2", hostelName: "Block B - Girls Hostel", roomNumber: "102", block: "Block A", parentName: "Ketan Patel", phone: "9829022222", bloodGroup: "A+", lockerNo: "LK-102", status: "Active", schoolId: "school-1" },
+      { id: "hs-3", name: "Rohan Gupta", studentId: "student-3", hostelName: "Block A - Boys Hostel", roomNumber: "201", block: "Block B", parentName: "Sanjay Gupta", phone: "9829033333", bloodGroup: "B+", lockerNo: "LK-201", status: "Active", schoolId: "school-1" },
+      { id: "hs-4", name: "Ishaan Verma", studentId: "student-4", hostelName: "Block C - Junior Hostel", roomNumber: "202", block: "Block B", parentName: "Vikram Verma", phone: "9829044444", bloodGroup: "AB+", lockerNo: "LK-202", status: "Active", schoolId: "school-1" },
+      { id: "hs-5", name: "Ananya Roy", studentId: "student-5", hostelName: "Block B - Girls Hostel", roomNumber: "301", block: "Block C", parentName: "Debabrata Roy", phone: "9829055555", bloodGroup: "O-", lockerNo: "LK-301", status: "Active", schoolId: "school-1" }
     ];
     const data = getStored("sms_hostel_students_demo", defaultHostelStudents);
     return { success: true, data };
@@ -1122,11 +1184,11 @@ async function mockApiResolver(endpoint, options = {}) {
 
   if (path === "/hostel-allotments" || path === "/hostel_allotments") {
     const defaultAllot = [
-      { id: "alt-1", studentName: "Aarav Sharma", roomNumber: "101", hostelName: "Ganga Boys Hostel", allotmentDate: "2026-06-01", status: "Active", schoolId: "school-1" },
-      { id: "alt-2", studentName: "Diya Patel", roomNumber: "102", hostelName: "Kaveri Girls Hostel", allotmentDate: "2026-06-01", status: "Active", schoolId: "school-1" },
-      { id: "alt-3", studentName: "Rohan Gupta", roomNumber: "201", hostelName: "Ganga Boys Hostel", allotmentDate: "2026-06-05", status: "Active", schoolId: "school-1" },
-      { id: "alt-4", studentName: "Ishaan Verma", roomNumber: "202", hostelName: "Yamuna Boys Hostel", allotmentDate: "2026-06-10", status: "Active", schoolId: "school-1" },
-      { id: "alt-5", studentName: "Ananya Roy", roomNumber: "301", hostelName: "Kaveri Girls Hostel", allotmentDate: "2026-06-15", status: "Active", schoolId: "school-1" }
+      { id: "alt-1", studentName: "Aarav Sharma", studentId: "student-1", roomNumber: "101", hostelName: "Block A - Boys Hostel", allotmentDate: "2026-06-01", checkInDate: "2026-06-01", status: "Active", rent: 65000, schoolId: "school-1" },
+      { id: "alt-2", studentName: "Diya Patel", studentId: "student-2", roomNumber: "102", hostelName: "Block B - Girls Hostel", allotmentDate: "2026-06-01", checkInDate: "2026-06-01", status: "Active", rent: 45000, schoolId: "school-1" },
+      { id: "alt-3", studentName: "Rohan Gupta", studentId: "student-3", roomNumber: "201", hostelName: "Block A - Boys Hostel", allotmentDate: "2026-06-05", checkInDate: "2026-06-05", status: "Active", rent: 90000, schoolId: "school-1" },
+      { id: "alt-4", studentName: "Ishaan Verma", studentId: "student-4", roomNumber: "202", hostelName: "Block C - Junior Hostel", allotmentDate: "2026-06-10", checkInDate: "2026-06-10", status: "Active", rent: 40000, schoolId: "school-1" },
+      { id: "alt-5", studentName: "Ananya Roy", studentId: "student-5", roomNumber: "301", hostelName: "Block B - Girls Hostel", allotmentDate: "2026-06-15", checkInDate: "2026-06-15", status: "Active", rent: 75000, schoolId: "school-1" }
     ];
     const data = getStored("sms_hostel_allotments_demo", defaultAllot);
     return { success: true, data };
@@ -1168,12 +1230,20 @@ async function mockApiResolver(endpoint, options = {}) {
     return { success: true, data };
   }
 
-  const method = (options.method || "GET").toUpperCase();
-  const urlObj = new URL(endpoint, "http://dummy.local");
-  const path = urlObj.pathname.replace("/api", "");
-  const params = Object.fromEntries(urlObj.searchParams.entries());
+  if (path === "/biometrics/devices" || path === "/biometrics/device") {
+    const data = getStored("sms_biometric_devices_demo", DUMMY_BIOMETRIC_DEVICES);
+    return { success: true, data };
+  }
 
-  await new Promise(r => setTimeout(r, 20));
+  if (path.startsWith("/biometrics/log") || path.startsWith("/biometrics/logs")) {
+    const data = getStored("sms_biometric_logs_demo", DUMMY_BIOMETRIC_LOGS);
+    return { success: true, data };
+  }
+
+  if (path === "/events") {
+    const data = getStored("sms_events_demo", DUMMY_EVENTS);
+    return { success: true, data };
+  }
 
   if (path === "/dashboard/stats" || path === "/health") {
     const schools = getStored("sms_schools_demo", DUMMY_SCHOOLS);
@@ -1239,9 +1309,6 @@ async function mockApiResolver(endpoint, options = {}) {
     if (params.role) {
       users = users.filter(u => u.role === params.role);
     }
-    if (params.schoolId) {
-      users = users.filter(u => !u.schoolId || u.schoolId === params.schoolId);
-    }
     if (method === "POST") {
       const body = JSON.parse(options.body || "{}");
       const newUser = { id: "usr-" + Date.now(), ...body, isActive: true };
@@ -1295,12 +1362,12 @@ async function mockApiResolver(endpoint, options = {}) {
     return { success: true, data: books };
   }
 
-  if (path === "/book_categories") {
+  if (path === "/book_categories" || path === "/book-categories") {
     const cats = getStored("sms_book_categories_demo", DUMMY_BOOK_CATEGORIES);
     return { success: true, data: cats };
   }
 
-  if (path === "/issued_books") {
+  if (path === "/issued_books" || path === "/issued-books") {
     const issued = getStored("sms_issued_books_demo", DUMMY_ISSUED_BOOKS);
     return { success: true, data: issued };
   }
@@ -1315,14 +1382,14 @@ async function mockApiResolver(endpoint, options = {}) {
     return { success: true, data: as };
   }
 
-  if (path === "/hostel-inventory" || path === "/hostel_inventory") {
-    const inv = getStored("sms_hostel_inventory_demo", DUMMY_HOSTEL_INVENTORY);
-    return { success: true, data: inv };
+  if (path === "/attendances" || path === "/attendance") {
+    const att = getStored("sms_attendances_demo", DUMMY_ATTENDANCES);
+    return { success: true, data: att };
   }
 
-  if (path === "/hostel-rooms" || path === "/hostels") {
-    const rooms = getStored("sms_hostel_rooms_demo", DUMMY_HOSTEL_ROOMS);
-    return { success: true, data: rooms };
+  if (path === "/timetables" || path === "/timetable") {
+    const tt = getStored("sms_timetables_demo", DUMMY_TIMETABLES);
+    return { success: true, data: tt };
   }
 
   if (path === "/buses") {
