@@ -33,22 +33,22 @@ export default function PortalEvents() {
       const res = await eventsApi.getAll({ schoolId });
       const liveEvents = (res.data || [])
         .map(e => {
-          const eStart = e.startDate ? e.startDate.split("T")[0] : "2026-07-09";
+          const eStart = e.startDate ? e.startDate.split("T")[0] : (e.date || "2026-08-15");
           const eEnd = e.endDate ? e.endDate.split("T")[0] : eStart;
           return {
             id: e.id,
-            title: e.title,
-            description: e.description,
+            title: e.title || "School Event",
+            description: e.description || "Campus event details.",
             category: e.category || "General",
-            venue: e.venue || "Campus Main Hall",
+            venue: e.venue || e.location || "Campus Main Hall",
             startDate: eStart,
-            startTime: e.startTime || "10:00 AM",
+            startTime: e.startTime || (e.time ? e.time.split(" - ")[0] : "09:00 AM"),
             endDate: eEnd,
-            endTime: e.endTime || "04:00 PM",
+            endTime: e.endTime || (e.time ? e.time.split(" - ")[1] : "04:00 PM"),
             organizer: e.organizer || "School Administration",
             targetAudience: e.targetAudience || "All Students",
             bannerFile: "event_banner.jpg",
-            status: e.status || "upcoming"
+            status: (e.status || "upcoming").toLowerCase()
           };
         });
 

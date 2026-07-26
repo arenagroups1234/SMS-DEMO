@@ -1288,9 +1288,21 @@ async function mockApiResolver(endpoint, options = {}) {
     return { success: true, data };
   }
 
+const DUMMY_EVENTS = [
+  { id: "ev-1", title: "Annual Science & Innovation Expo 2026", description: "Inter-school robotics, AI, and green energy model exhibition.", date: "2026-08-15", startDate: "2026-08-15", endDate: "2026-08-15", time: "09:00 AM - 04:00 PM", startTime: "09:00 AM", endTime: "04:00 PM", location: "Auditorium Main Hall", venue: "Auditorium Main Hall", category: "Academic", organizer: "Science Department", targetAudience: "All Students & Parents", status: "upcoming", schoolId: "school-1" },
+  { id: "ev-2", title: "Inter-House Athletics & Football Tournament", description: "Track & field sprints, high jump, and inter-house football championship.", date: "2026-08-25", startDate: "2026-08-25", endDate: "2026-08-26", time: "08:00 AM - 05:00 PM", startTime: "08:00 AM", endTime: "05:00 PM", location: "School Sports Ground", venue: "School Sports Ground", category: "Sports", organizer: "Physical Education Dept", targetAudience: "Classes 6th to 12th", status: "upcoming", schoolId: "school-1" },
+  { id: "ev-3", title: "Independence Day Cultural Celebration", description: "Flag hoisting, patriotic songs, classical dance, and drama performances.", date: "2026-08-15", startDate: "2026-08-15", endDate: "2026-08-15", time: "07:30 AM - 11:30 AM", startTime: "07:30 AM", endTime: "11:30 AM", location: "Central Quadrangle", venue: "Central Quadrangle", category: "Cultural", organizer: "Cultural Committee", targetAudience: "Entire School Community", status: "upcoming", schoolId: "school-1" },
+  { id: "ev-4", title: "Teachers' Day Felicitation & Award Ceremony", description: "Special student-led program honoring faculty achievements.", date: "2026-09-05", startDate: "2026-09-05", endDate: "2026-09-05", time: "10:00 AM - 01:00 PM", startTime: "10:00 AM", endTime: "01:00 PM", location: "Subhash Auditorium", venue: "Subhash Auditorium", category: "Celebration", organizer: "Student Council", targetAudience: "Staff & High School Students", status: "upcoming", schoolId: "school-1" },
+  { id: "ev-5", title: "Parent-Teacher Interactive Symposium", description: "Comprehensive discussion on holistic student growth and academic feedback.", date: "2026-09-20", startDate: "2026-09-20", endDate: "2026-09-20", time: "09:00 AM - 02:00 PM", startTime: "09:00 AM", endTime: "02:00 PM", location: "Main Academic Block", venue: "Main Academic Block", category: "Meeting", organizer: "School Administration", targetAudience: "Parents & Faculty", status: "upcoming", schoolId: "school-1" }
+];
+
   if (path === "/events") {
-    const data = getStored("sms_events_demo", DUMMY_EVENTS);
-    return { success: true, data };
+    let events = getStored("sms_events_demo", DUMMY_EVENTS);
+    if (!events || events.length === 0 || !events[0].venue) {
+      events = DUMMY_EVENTS;
+      try { localStorage.setItem("sms_events_demo", JSON.stringify(DUMMY_EVENTS)); } catch(e){}
+    }
+    return { success: true, data: events };
   }
 
   if (path === "/dashboard/stats" || path === "/health") {
