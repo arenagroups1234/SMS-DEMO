@@ -953,18 +953,18 @@ const DUMMY_USERS = [
   { id: "teacher-5", name: "Er. Dharmendra Singh", email: "dharmendra@school.com", phone: "9876543214", role: "teacher", schoolId: "school-1", className: "9th A, 9th B, 10th A, 10th B, 11th Science", classes: ["9th A", "9th B", "10th A", "10th B", "11th Science"], department: "Computer Science", subject: "Computer Science", designation: "IT Lead", isActive: true },
   
   // 5 Students
-  { id: "student-1", name: "Aarav Sharma", email: "aarav@student.com", phone: "9829011111", role: "student", schoolId: "school-1", className: "9th A", rollNo: "101", fatherName: "Rajesh Sharma", motherName: "Sushma Sharma", address: "12 Elm St, Udaipur", admissionNo: "ADM-9001", isActive: true },
-  { id: "student-2", name: "Diya Patel", email: "diya@student.com", phone: "9829022222", role: "student", schoolId: "school-1", className: "9th A", rollNo: "102", fatherName: "Ketan Patel", motherName: "Meena Patel", address: "45 Pine Ave, Udaipur", admissionNo: "ADM-9002", isActive: true },
-  { id: "student-3", name: "Rohan Gupta", email: "rohan@student.com", phone: "9829033333", role: "student", schoolId: "school-1", className: "10th B", rollNo: "103", fatherName: "Sanjay Gupta", motherName: "Rita Gupta", address: "88 Maple St, Udaipur", admissionNo: "ADM-9003", isActive: true },
-  { id: "student-4", name: "Ishaan Verma", email: "ishaan@student.com", phone: "9829044444", role: "student", schoolId: "school-1", className: "10th A", rollNo: "104", fatherName: "Vikram Verma", motherName: "Pooja Verma", address: "14 Lake View Road, Udaipur", admissionNo: "ADM-9004", isActive: true },
-  { id: "student-5", name: "Ananya Roy", email: "ananya.roy@student.com", phone: "9829055555", role: "student", schoolId: "school-1", className: "9th B", rollNo: "105", fatherName: "Debabrata Roy", motherName: "Kakoli Roy", address: "99 Civil Lines, Udaipur", admissionNo: "ADM-9005", isActive: true },
-  
+  { id: "student-1", name: "Aarav Sharma", email: "aarav@student.com", phone: "9829011111", role: "student", schoolId: "school-1", className: "9th A", rollNo: "101", fatherName: "Rajesh Sharma", motherName: "Sushma Sharma", address: "12 Elm St, Udaipur", admissionNo: "ADM-9001", busId: "bus-1", busNumber: "BUS-01", isActive: true },
+  { id: "student-2", name: "Diya Patel", email: "diya@student.com", phone: "9829022222", role: "student", schoolId: "school-1", className: "9th A", rollNo: "102", fatherName: "Ketan Patel", motherName: "Meena Patel", address: "45 Pine Ave, Udaipur", admissionNo: "ADM-9002", busId: "bus-2", busNumber: "BUS-02", isActive: true },
+  { id: "student-3", name: "Rohan Gupta", email: "rohan@student.com", phone: "9829033333", role: "student", schoolId: "school-1", className: "10th B", rollNo: "103", fatherName: "Sanjay Gupta", motherName: "Rita Gupta", address: "88 Maple St, Udaipur", admissionNo: "ADM-9003", busId: "bus-1", busNumber: "BUS-01", isActive: true },
+  { id: "student-4", name: "Ishaan Verma", email: "ishaan@student.com", phone: "9829044444", role: "student", schoolId: "school-1", className: "10th A", rollNo: "104", fatherName: "Vikram Verma", motherName: "Pooja Verma", address: "14 Lake View Road, Udaipur", admissionNo: "ADM-9004", busId: "bus-3", busNumber: "BUS-03", isActive: true },
+  { id: "student-5", name: "Ananya Roy", email: "ananya.roy@student.com", phone: "9829055555", role: "student", schoolId: "school-1", className: "9th B", rollNo: "105", fatherName: "Debabrata Roy", motherName: "Kakoli Roy", address: "99 Civil Lines, Udaipur", admissionNo: "ADM-9005", busId: null, busNumber: null, isActive: true },
+
   // 5 Drivers
-  { id: "driver-1", name: "Ramesh Kumar", phone: "9988776655", role: "driver", schoolId: "school-1", busNumber: "BUS-01", isActive: true },
-  { id: "driver-2", name: "Suresh Yadav", phone: "9988776644", role: "driver", schoolId: "school-1", busNumber: "BUS-02", isActive: true },
-  { id: "driver-3", name: "Mahendra Singh", phone: "9988776633", role: "driver", schoolId: "school-1", busNumber: "BUS-03", isActive: true },
-  { id: "driver-4", name: "Vikram Rathore", phone: "9988776622", role: "driver", schoolId: "school-1", busNumber: "BUS-04", isActive: true },
-  { id: "driver-5", name: "Gurpreet Singh", phone: "9988776611", role: "driver", schoolId: "school-1", busNumber: "BUS-05", isActive: true }
+  { id: "driver-1", name: "Ramesh Kumar", phone: "9988776655", role: "driver", schoolId: "school-1", busNumber: "BUS-01", busId: "bus-1", isActive: true },
+  { id: "driver-2", name: "Suresh Yadav", phone: "9988776644", role: "driver", schoolId: "school-1", busNumber: "BUS-02", busId: "bus-2", isActive: true },
+  { id: "driver-3", name: "Mahendra Singh", phone: "9988776633", role: "driver", schoolId: "school-1", busNumber: "BUS-03", busId: "bus-3", isActive: true },
+  { id: "driver-4", name: "Vikram Rathore", phone: "9988776622", role: "driver", schoolId: "school-1", busNumber: "BUS-04", busId: "bus-4", isActive: true },
+  { id: "driver-5", name: "Gurpreet Singh", phone: "9988776611", role: "driver", schoolId: "school-1", busNumber: "BUS-05", busId: "bus-5", isActive: true }
 ];
 
 const DUMMY_CLASSES = [
@@ -1062,19 +1062,18 @@ const DUMMY_HOSTEL_ROOMS = [
 ];
 
 const DUMMY_BUSES = [
-  { id: "bus-1", busNumber: "BUS-01", vehicleNumber: "MH-12-AB-1001", driverName: "Ramesh Kumar", driverPhone: "9988776655", gpsDeviceId: "IMEI-880011", lat: 24.5854, lng: 73.7125, speed: 35, isTripActive: true, schoolId: "school-1" },
-  { id: "bus-2", busNumber: "BUS-02", vehicleNumber: "RJ-27-PA-2002", driverName: "Suresh Yadav", driverPhone: "9988776644", gpsDeviceId: "IMEI-880022", lat: 24.5900, lng: 73.7200, speed: 40, isTripActive: true, schoolId: "school-1" },
-  { id: "bus-3", busNumber: "BUS-03", vehicleNumber: "MP-09-CA-3003", driverName: "Mahendra Singh", driverPhone: "9988776633", gpsDeviceId: "IMEI-880033", lat: 24.6000, lng: 73.7300, speed: 0, isTripActive: false, schoolId: "school-1" },
-  { id: "bus-4", busNumber: "BUS-04", vehicleNumber: "DL-01-GA-4004", driverName: "Vikram Rathore", driverPhone: "9988776622", gpsDeviceId: "IMEI-880044", lat: 24.6100, lng: 73.7400, speed: 0, isTripActive: false, schoolId: "school-1" },
-  { id: "bus-5", busNumber: "BUS-05", vehicleNumber: "PB-65-BA-5005", driverName: "Gurpreet Singh", driverPhone: "9988776611", gpsDeviceId: "IMEI-880055", lat: 24.6200, lng: 73.7500, speed: 0, isTripActive: false, schoolId: "school-1" }
+  { id: "bus-1", busNumber: "BUS-01", vehicleNumber: "MH-12-AB-1001", driverName: "Ramesh Kumar", driverPhone: "9988776655", gpsDeviceId: "IMEI-880011", lat: 28.6139, lng: 77.2090, latitude: 28.6139, longitude: 77.2090, speed: 35, isTripActive: true, tripStatus: "Moving", routeName: "Central Route A", schoolId: "school-1" },
+  { id: "bus-2", busNumber: "BUS-02", vehicleNumber: "RJ-27-PA-2002", driverName: "Suresh Yadav", driverPhone: "9988776644", gpsDeviceId: "IMEI-880022", lat: 28.6250, lng: 77.2200, latitude: 28.6250, longitude: 77.2200, speed: 40, isTripActive: true, tripStatus: "Moving", routeName: "North Route B", schoolId: "school-1" },
+  { id: "bus-3", busNumber: "BUS-03", vehicleNumber: "MP-09-CA-3003", driverName: "Mahendra Singh", driverPhone: "9988776633", gpsDeviceId: "IMEI-880033", lat: 28.6010, lng: 77.1890, latitude: 28.6010, longitude: 77.1890, speed: 0, isTripActive: true, tripStatus: "Idle", routeName: "South Express C", schoolId: "school-1" },
+  { id: "bus-4", busNumber: "BUS-04", vehicleNumber: "DL-01-GA-4004", driverName: "Vikram Rathore", driverPhone: "9988776622", gpsDeviceId: "IMEI-880044", lat: 28.6300, lng: 77.1500, latitude: 28.6300, longitude: 77.1500, speed: 28, isTripActive: true, tripStatus: "Moving", routeName: "West Ring Route D", schoolId: "school-1" },
+  { id: "bus-5", busNumber: "BUS-05", vehicleNumber: "PB-65-BA-5005", driverName: "Gurpreet Singh", driverPhone: "9988776611", gpsDeviceId: "IMEI-880055", lat: 28.5800, lng: 77.2500, latitude: 28.5800, longitude: 77.2500, speed: 0, isTripActive: false, tripStatus: "Stopped", routeName: "East Campus Link E", schoolId: "school-1" }
 ];
 
-const DUMMY_EVENTS = [
-  { id: "ev-1", title: "Annual Science & Innovation Expo 2026", description: "Inter-school robotics, AI, and green energy model exhibition.", date: "2026-08-15", time: "09:00 AM - 04:00 PM", location: "Auditorium Main Hall", category: "Academic", organizer: "Science Department", status: "Upcoming", schoolId: "school-1" },
-  { id: "ev-2", title: "Inter-House Athletics & Football Tournament", description: "Track & field sprints, high jump, and inter-house football championship.", date: "2026-08-25", time: "08:00 AM - 05:00 PM", location: "School Sports Ground", category: "Sports", organizer: "Physical Education Dept", status: "Upcoming", schoolId: "school-1" },
-  { id: "ev-3", title: "Independence Day Cultural Celebration", description: "Flag hoisting, patriotic songs, classical dance, and drama performances.", date: "2026-08-15", time: "07:30 AM - 11:30 AM", location: "Central Quadrangle", category: "Cultural", organizer: "Cultural Committee", status: "Scheduled", schoolId: "school-1" },
-  { id: "ev-4", title: "Teachers' Day Felicitation & Award Ceremony", description: "Special student-led program honoring faculty achievements.", date: "2026-09-05", time: "10:00 AM - 01:00 PM", location: "Subhash Auditorium", category: "Celebration", organizer: "Student Council", status: "Upcoming", schoolId: "school-1" },
-  { id: "ev-5", title: "Parent-Teacher Interactive Symposium", description: "Comprehensive discussion on holistic student growth and academic feedback.", date: "2026-09-20", time: "09:00 AM - 02:00 PM", location: "Main Academic Block", category: "Meeting", organizer: "School Administration", status: "Upcoming", schoolId: "school-1" }
+const DUMMY_CONTACTS = [
+  { id: "cnt-1", name: "St. Xavier Admin", email: "admin@stxaviers.edu", subject: "Biometric Device Integration Sync Issue", message: "Category: Technical\nSeverity: High\n\nMain Gate Biometric Scanner #01 is intermittent during morning peak hours (8:00 AM). Need firmware verification.", status: "responded", createdAt: "2026-07-25T10:30:00Z", reply: "Technical team inspected hardware. Firmware upgraded to v4.2. Connection restored." },
+  { id: "cnt-2", name: "St. Xavier Admin", email: "admin@stxaviers.edu", subject: "Fee Receipt Custom Header Request", message: "Category: Billing\nSeverity: Medium\n\nWe need to add our school registration number and affiliation code to the PDF fee receipt header.", status: "responded", createdAt: "2026-07-24T14:15:00Z", reply: "Header template updated in School Profile settings. Please verify generated PDF." },
+  { id: "cnt-3", name: "St. Xavier Admin", email: "admin@stxaviers.edu", subject: "GPS Live Tracking Refresh Rate", message: "Category: Transport\nSeverity: Low\n\nCan we change the GPS tracking position refresh frequency from 10 seconds to 5 seconds during active trips?", status: "new", createdAt: "2026-07-26T09:00:00Z", reply: "" },
+  { id: "cnt-4", name: "St. Xavier Admin", email: "admin@stxaviers.edu", subject: "Bulk Student Photo Upload Support", message: "Category: General\nSeverity: Low\n\nRequesting zip file bulk upload for student profile photographs.", status: "new", createdAt: "2026-07-26T16:45:00Z", reply: "" }
 ];
 
 const DUMMY_BIOMETRIC_DEVICES = [
@@ -1440,10 +1439,37 @@ async function mockApiResolver(endpoint, options = {}) {
     return { success: true, data: tt };
   }
 
+  if (path === "/contacts") {
+    let contacts = getStored("sms_contacts_demo", DUMMY_CONTACTS);
+    if (method === "POST") {
+      const body = typeof options.body === "string" ? JSON.parse(options.body) : (options.body || {});
+      const newTicket = { id: "cnt-" + Date.now(), ...body, status: "new", createdAt: new Date().toISOString() };
+      contacts.push(newTicket);
+      setStored("sms_contacts_demo", contacts);
+      return { success: true, message: "Ticket created", data: newTicket };
+    }
+    return { success: true, data: contacts, meta: { total: contacts.length } };
+  }
+
   if (path === "/buses/drivers") {
     const users = getStored("sms_users_demo", DUMMY_USERS);
     const drivers = users.filter(u => u.role === "driver");
     return { success: true, data: drivers };
+  }
+
+  if (path === "/buses/students/assign" && method === "POST") {
+    const body = typeof options.body === "string" ? JSON.parse(options.body) : (options.body || {});
+    const { studentId, busId } = body;
+    const users = getStored("sms_users_demo", DUMMY_USERS);
+    const buses = getStored("sms_buses_demo", DUMMY_BUSES);
+    const busObj = buses.find(b => b.id === busId);
+    const targetStudent = users.find(u => u.id === studentId);
+    if (targetStudent) {
+      targetStudent.busId = busId || null;
+      targetStudent.busNumber = busObj ? busObj.busNumber : null;
+      setStored("sms_users_demo", users);
+    }
+    return { success: true, message: "Bus assigned to student", data: targetStudent };
   }
 
   if (path === "/buses/students") {
