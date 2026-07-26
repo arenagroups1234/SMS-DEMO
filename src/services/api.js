@@ -1440,7 +1440,24 @@ async function mockApiResolver(endpoint, options = {}) {
     return { success: true, data: tt };
   }
 
-  if (path === "/buses") {
+  if (path === "/buses/drivers") {
+    const users = getStored("sms_users_demo", DUMMY_USERS);
+    const drivers = users.filter(u => u.role === "driver");
+    return { success: true, data: drivers };
+  }
+
+  if (path === "/buses/students") {
+    const users = getStored("sms_users_demo", DUMMY_USERS);
+    const students = users.filter(u => u.role === "student");
+    return { success: true, data: students };
+  }
+
+  if (path === "/buses/live" || path.startsWith("/buses/trip")) {
+    const buses = getStored("sms_buses_demo", DUMMY_BUSES);
+    return { success: true, data: buses };
+  }
+
+  if (path.startsWith("/buses")) {
     const buses = getStored("sms_buses_demo", DUMMY_BUSES);
     return { success: true, data: buses };
   }
