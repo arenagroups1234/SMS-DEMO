@@ -1867,3 +1867,92 @@ body:has(.landing-root), html:has(.landing-root), #root:has(.landing-root) {
   height: auto !important;
   width: auto !important;
 }
+
+
+/* ── PHONE FRIENDLY & MOBILE RESPONSIVE POLISH ── */
+
+@media (max-width: 1024px) {
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+  .about-images-grid {
+    height: auto !important;
+    min-height: 280px !important;
+    margin-top: 10px !important;
+    position: relative !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  .about-img-1 {
+    width: 60% !important;
+    height: 180px !important;
+    position: relative !important;
+    top: 0 !important;
+    right: 0 !important;
+    margin-right: -20px !important;
+  }
+  .about-img-2 {
+    width: 65% !important;
+    height: 200px !important;
+    position: relative !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    margin-left: -20px !important;
+    z-index: 3 !important;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 32px !important;
+  }
+  .footer-bottom {
+    flex-direction: column-reverse !important;
+    align-items: flex-start !important;
+    gap: 16px !important;
+    padding: 24px 16px 0 !important;
+    text-align: left !important;
+  }
+  .footer-bottom-info {
+    flex-direction: column !important;
+    gap: 8px !important;
+    word-break: break-all !important;
+  }
+  .footer-copyright {
+    font-size: 12.5px !important;
+    color: rgba(255, 255, 255, 0.5) !important;
+    margin-top: 4px !important;
+  }
+  .contact-form-block {
+    padding: 24px !important;
+  }
+  .contact-info-block {
+    padding: 24px !important;
+  }
+  .contact-form-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .form-group-full {
+    grid-column: span 1 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .section-title {
+    font-size: 26px !important;
+  }
+  .section-container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}

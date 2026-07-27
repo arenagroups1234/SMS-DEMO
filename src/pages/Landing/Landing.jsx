@@ -350,6 +350,7 @@ export default function Landing() {
         <nav className="nav-links">
           <a href="#home" className="nav-link">HOME</a>
           <a href="#about" className="nav-link">About Us</a>
+          <a href="#services" className="nav-link">Services</a>
           <a href="#programs" className="nav-link">Programs</a>
           <a href="#events" className="nav-link">Events</a>
           <a href="#news" className="nav-link">News</a>
@@ -414,6 +415,7 @@ export default function Landing() {
           <nav className="mobile-nav-links">
             <a href="#home" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>HOME</a>
             <a href="#about" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>About Us</a>
+            <a href="#services" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Services</a>
             <a href="#programs" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Programs</a>
             <a href="#events" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>Events</a>
             <a href="#news" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>News</a>
@@ -933,7 +935,122 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ── CONTACT & HELP SECTION ── */}
+      
+      {/* ── OUR SERVICES & MODULES SHOWCASE ── */}
+      <section id="services" className="services-section" style={{ padding: "90px 0", background: "#FFFFFF" }}>
+        <div className="section-container">
+          <div className="title-center">
+            <span className="section-label">COMPLETE ALL-IN-ONE EDUCATIONAL SAAS SOLUTION</span>
+            <h2 className="section-title">Our Services & Management Suite</h2>
+            <p className="section-subtitle">
+              EduSphere integrates every administrative domain into one seamless cloud workspace. From automated student attendance to live transport tracking and hostel allocations.
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: "30px", marginTop: "50px" }}>
+            
+            {/* 1. Hostel Management */}
+            <div className="module-card-hover" style={{ padding: "32px", borderRadius: "20px", background: "var(--c-slate-50)", border: "1px solid var(--c-slate-100)" }}>
+              <div style={{ width: "52px", height: "52px", borderRadius: "14px", background: "rgba(26, 140, 255, 0.1)", color: "var(--c-primary)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "20px" }}>
+                <Home size={26} />
+              </div>
+              <h3 style={{ fontSize: "20px", fontWeight: "800", color: "var(--c-slate-900)", marginBottom: "10px" }}>Hostel & Dormitory Suite</h3>
+              <p style={{ fontSize: "14px", color: "var(--c-slate-600)", lineHeight: "1.6", marginBottom: "16px" }}>
+                Complete hostel room allocations, room inventory tracking, damage ledgers, visitor logbooks, warden desk controls, and fee payment receipts.
+              </p>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+                <span style={{ fontSize: "11px", fontWeight: "700", padding: "4px 10px", borderRadius: "6px", background: "#FFFFFF", border: "1px solid var(--c-slate-200)", color: "var(--c-slate-700)" }}>Room Allotments</span>
+                <span style={{ fontSize: "11px", fontWeight: "700", padding: "4px 10px", borderRadius: "6px", background: "#FFFFFF", border: "1px solid var(--c-slate-200)", color: "var(--c-slate-700)" }}>Damage Ledger</span>
+                <span style={{ fontSize: "11px", fontWeight: "700", padding: "4px 10px", borderRadius: "6px", background: "#FFFFFF", border: "1px solid var(--c-slate-200)", color: "var(--c-slate-700)" }}>Warden Portal</span>
+              </div>
+            </div>
+
+            {/* 2. Digital Library */}
+            <div className="module-card-hover" style={{ padding: "32px", borderRadius: "20px", background: "var(--c-slate-50)", border: "1px solid var(--c-slate-100)" }}>
+              <div style={{ width: "52px", height: "52px", borderRadius: "14px", background: "rgba(139, 92, 246, 0.1)", color: "#8B5CF6", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "20px" }}>
+                <BookOpen size={26} />
+              </div>
+              <h3 style={{ fontSize: "20px", fontWeight: "800", color: "var(--c-slate-900)", marginBottom: "10px" }}>Digital Library System</h3>
+              <p style={{ fontSize: "14px", color: "var(--c-slate-600)", lineHeight: "1.6", marginBottom: "16px" }}>
+                Smart book cataloging with ISBN search, issue & return logs, automatic overdue fine calculators, and category-wise stock analytics.
+              </p>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+                <span style={{ fontSize: "11px", fontWeight: "700", padding: "4px 10px", borderRadius: "6px", background: "#FFFFFF", border: "1px solid var(--c-slate-200)", color: "var(--c-slate-700)" }}>ISBN Catalog</span>
+                <span style={{ fontSize: "11px", fontWeight: "700", padding: "4px 10px", borderRadius: "6px", background: "#FFFFFF", border: "1px solid var(--c-slate-200)", color: "var(--c-slate-700)" }}>Issue & Return</span>
+                <span style={{ fontSize: "11px", fontWeight: "700", padding: "4px 10px", borderRadius: "6px", background: "#FFFFFF", border: "1px solid var(--c-slate-200)", color: "var(--c-slate-700)" }}>Fine Calculator</span>
+              </div>
+            </div>
+
+            {/* 3. Biometrics & Attendance */}
+            <div className="module-card-hover" style={{ padding: "32px", borderRadius: "20px", background: "var(--c-slate-50)", border: "1px solid var(--c-slate-100)" }}>
+              <div style={{ width: "52px", height: "52px", borderRadius: "14px", background: "rgba(16, 185, 129, 0.1)", color: "#10B981", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "20px" }}>
+                <UserCheck size={26} />
+              </div>
+              <h3 style={{ fontSize: "20px", fontWeight: "800", color: "var(--c-slate-900)", marginBottom: "10px" }}>Biometrics & Attendance Log</h3>
+              <p style={{ fontSize: "14px", color: "var(--c-slate-600)", lineHeight: "1.6", marginBottom: "16px" }}>
+                Hardware integration for thumb/facial biometrics, automated daily attendance logs, teacher register, and SMS absentee notifications.
+              </p>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+                <span style={{ fontSize: "11px", fontWeight: "700", padding: "4px 10px", borderRadius: "6px", background: "#FFFFFF", border: "1px solid var(--c-slate-200)", color: "var(--c-slate-700)" }}>RFID / Thumb Sync</span>
+                <span style={{ fontSize: "11px", fontWeight: "700", padding: "4px 10px", borderRadius: "6px", background: "#FFFFFF", border: "1px solid var(--c-slate-200)", color: "var(--c-slate-700)" }}>Absentee Alerts</span>
+                <span style={{ fontSize: "11px", fontWeight: "700", padding: "4px 10px", borderRadius: "6px", background: "#FFFFFF", border: "1px solid var(--c-slate-200)", color: "var(--c-slate-700)" }}>Staff Logs</span>
+              </div>
+            </div>
+
+            {/* 4. Live Bus GPS Tracking */}
+            <div className="module-card-hover" style={{ padding: "32px", borderRadius: "20px", background: "var(--c-slate-50)", border: "1px solid var(--c-slate-100)" }}>
+              <div style={{ width: "52px", height: "52px", borderRadius: "14px", background: "rgba(245, 158, 11, 0.1)", color: "#F59E0B", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "20px" }}>
+                <Truck size={26} />
+              </div>
+              <h3 style={{ fontSize: "20px", fontWeight: "800", color: "var(--c-slate-900)", marginBottom: "10px" }}>Live Bus GPS Tracking</h3>
+              <p style={{ fontSize: "14px", color: "var(--c-slate-600)", lineHeight: "1.6", marginBottom: "16px" }}>
+                GT06 protocol hardware gateway, driver mobile console, stop-by-stop route optimization, and real-time live map tracking on parent app.
+              </p>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+                <span style={{ fontSize: "11px", fontWeight: "700", padding: "4px 10px", borderRadius: "6px", background: "#FFFFFF", border: "1px solid var(--c-slate-200)", color: "var(--c-slate-700)" }}>GT06 Gateway</span>
+                <span style={{ fontSize: "11px", fontWeight: "700", padding: "4px 10px", borderRadius: "6px", background: "#FFFFFF", border: "1px solid var(--c-slate-200)", color: "var(--c-slate-700)" }}>Driver App</span>
+                <span style={{ fontSize: "11px", fontWeight: "700", padding: "4px 10px", borderRadius: "6px", background: "#FFFFFF", border: "1px solid var(--c-slate-200)", color: "var(--c-slate-700)" }}>Parent Live Map</span>
+              </div>
+            </div>
+
+            {/* 5. Academic & Examinations */}
+            <div className="module-card-hover" style={{ padding: "32px", borderRadius: "20px", background: "var(--c-slate-50)", border: "1px solid var(--c-slate-100)" }}>
+              <div style={{ width: "52px", height: "52px", borderRadius: "14px", background: "rgba(239, 68, 68, 0.1)", color: "#EF4444", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "20px" }}>
+                <Award size={26} />
+              </div>
+              <h3 style={{ fontSize: "20px", fontWeight: "800", color: "var(--c-slate-900)", marginBottom: "10px" }}>Academic & Examination Hub</h3>
+              <p style={{ fontSize: "14px", color: "var(--c-slate-600)", lineHeight: "1.6", marginBottom: "16px" }}>
+                Conflict-free class timetable scheduling, homework assignments submission portal, digital report cards, and automated marksheet generation.
+              </p>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+                <span style={{ fontSize: "11px", fontWeight: "700", padding: "4px 10px", borderRadius: "6px", background: "#FFFFFF", border: "1px solid var(--c-slate-200)", color: "var(--c-slate-700)" }}>Timetables</span>
+                <span style={{ fontSize: "11px", fontWeight: "700", padding: "4px 10px", borderRadius: "6px", background: "#FFFFFF", border: "1px solid var(--c-slate-200)", color: "var(--c-slate-700)" }}>Homework Portal</span>
+                <span style={{ fontSize: "11px", fontWeight: "700", padding: "4px 10px", borderRadius: "6px", background: "#FFFFFF", border: "1px solid var(--c-slate-200)", color: "var(--c-slate-700)" }}>Report Cards</span>
+              </div>
+            </div>
+
+            {/* 6. Multi-Tenant SaaS Roles */}
+            <div className="module-card-hover" style={{ padding: "32px", borderRadius: "20px", background: "var(--c-slate-50)", border: "1px solid var(--c-slate-100)" }}>
+              <div style={{ width: "52px", height: "52px", borderRadius: "14px", background: "rgba(14, 165, 233, 0.1)", color: "#0EA5E9", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "20px" }}>
+                <Layers size={26} />
+              </div>
+              <h3 style={{ fontSize: "20px", fontWeight: "800", color: "var(--c-slate-900)", marginBottom: "10px" }}>6-Role Multi-Tenant SaaS</h3>
+              <p style={{ fontSize: "14px", color: "var(--c-slate-600)", lineHeight: "1.6", marginBottom: "16px" }}>
+                Dedicated role-based security portals for Super Admin, School Admin, Teachers, Parents/Students, Bus Drivers, and Hostel Wardens.
+              </p>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+                <span style={{ fontSize: "11px", fontWeight: "700", padding: "4px 10px", borderRadius: "6px", background: "#FFFFFF", border: "1px solid var(--c-slate-200)", color: "var(--c-slate-700)" }}>Super Admin</span>
+                <span style={{ fontSize: "11px", fontWeight: "700", padding: "4px 10px", borderRadius: "6px", background: "#FFFFFF", border: "1px solid var(--c-slate-200)", color: "var(--c-slate-700)" }}>School Admin</span>
+                <span style={{ fontSize: "11px", fontWeight: "700", padding: "4px 10px", borderRadius: "6px", background: "#FFFFFF", border: "1px solid var(--c-slate-200)", color: "var(--c-slate-700)" }}>Teacher & Parent</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+            {/* ── CONTACT & HELP SECTION ── */}
       <section id="contact" className="contact-section">
         <div className="section-container">
           <div className="title-center">
@@ -944,8 +1061,62 @@ export default function Landing() {
             </p>
           </div>
 
-          <div className="contact-grid" style={{ display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: "40px", background: "none", boxShadow: "none", border: "none" }}>
-            {/* Left Form Column */}
+          <div className="contact-grid" style={{ display: "grid", gridTemplateColumns: "0.9fr 1.1fr", gap: "40px", background: "none", boxShadow: "none", border: "none" }}>
+            
+            {/* Left Column: Info and Map (Swapped from Right to Left!) */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+              <div className="contact-info-block" style={{ borderRadius: "20px", padding: "40px", flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                <h3 className="contact-info-title" style={{ fontSize: "22px", marginBottom: "20px" }}>Get in touch</h3>
+                
+                <div className="contact-details" style={{ gap: "20px" }}>
+                  <div className="contact-detail-item">
+                    <Mail className="contact-detail-icon" />
+                    <div>
+                      <div className="contact-detail-label">EMAIL US</div>
+                      <div className="contact-detail-value">npdigitalsolutions001@gmail.com</div>
+                    </div>
+                  </div>
+
+                  <div className="contact-detail-item">
+                    <Phone className="contact-detail-icon" />
+                    <div>
+                      <div className="contact-detail-label">PHONE NUMBER</div>
+                      <div className="contact-detail-value">+91 9509167614</div>
+                    </div>
+                  </div>
+
+                  <div className="contact-detail-item">
+                    <MapPin className="contact-detail-icon" />
+                    <div>
+                      <div className="contact-detail-label">ADDRESS</div>
+                      <div className="contact-detail-value">1st floor Nanda building Ambay Market, Jamuna Dairy, Sodala, Jaipur, Rajasthan 302006</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="contact-socials" style={{ marginTop: "24px" }}>
+                  <a href="https://www.facebook.com/profile.php?id=61574331538312" target="_blank" rel="noopener noreferrer" className="social-circle" aria-label="Facebook"><Facebook size={16} /></a>
+                  <a href="https://www.instagram.com/npdigitalsolutions001/" target="_blank" rel="noopener noreferrer" className="social-circle" aria-label="Instagram"><Instagram size={16} /></a>
+                  <a href="https://www.linkedin.com/in/np-digital-solutions-a8b162400/" target="_blank" rel="noopener noreferrer" className="social-circle" aria-label="LinkedIn"><Linkedin size={16} /></a>
+                  <a href="https://github.com/npdigitalsolutions001" target="_blank" rel="noopener noreferrer" className="social-circle" aria-label="GitHub"><Github size={16} /></a>
+                </div>
+              </div>
+
+              {/* Map embed */}
+              <div style={{ background: "#FFFFFF", borderRadius: "20px", overflow: "hidden", border: "1px solid var(--c-slate-100)", boxShadow: "0 20px 50px rgba(15, 23, 42, 0.04)", height: "250px" }}>
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1186.9402846792677!2d75.77138001788163!3d26.902462148173132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db4657e04180d%3A0xd39e8f2a5d295ffe!2sAmbey%20Market%2C%20Jamuna%20Dairy%2C%20Gayatri%20Nagar%2C%20Sodala%2C%20Jaipur%2C%20Rajasthan%20302006!5e0!3m2!1sen!2sin!4v1774947591241!5m2!1sen!2sin" 
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0 }} 
+                  allowFullScreen="" 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            </div>
+
+            {/* Right Form Column (Swapped from Left to Right!) */}
             <div className="contact-form-block" style={{ background: "#FFFFFF", padding: "48px", borderRadius: "20px", border: "1px solid var(--c-slate-100)", boxShadow: "0 20px 50px rgba(15, 23, 42, 0.04)" }}>
               <h3 style={{ fontSize: "22px", fontWeight: "700", marginBottom: "24px", color: "var(--c-slate-900)" }}>Send Us a Message</h3>
               {formSent ? (
@@ -1024,58 +1195,6 @@ export default function Landing() {
               )}
             </div>
 
-            {/* Right Column: Info and Map */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-              <div className="contact-info-block" style={{ borderRadius: "20px", padding: "40px", flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-                <h3 className="contact-info-title" style={{ fontSize: "22px", marginBottom: "20px" }}>Get in touch</h3>
-                
-                <div className="contact-details" style={{ gap: "20px" }}>
-                  <div className="contact-detail-item">
-                    <Mail className="contact-detail-icon" />
-                    <div>
-                      <div className="contact-detail-label">EMAIL US</div>
-                      <div className="contact-detail-value">npdigitalsolutions001@gmail.com</div>
-                    </div>
-                  </div>
-
-                  <div className="contact-detail-item">
-                    <Phone className="contact-detail-icon" />
-                    <div>
-                      <div className="contact-detail-label">PHONE NUMBER</div>
-                      <div className="contact-detail-value">+91 9509167614</div>
-                    </div>
-                  </div>
-
-                  <div className="contact-detail-item">
-                    <MapPin className="contact-detail-icon" />
-                    <div>
-                      <div className="contact-detail-label">ADDRESS</div>
-                      <div className="contact-detail-value">1st floor Nanda building Ambay Market, Jamuna Dairy, Sodala, Jaipur, Rajasthan 302006</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="contact-socials" style={{ marginTop: "24px" }}>
-                  <a href="https://www.facebook.com/profile.php?id=61574331538312" target="_blank" rel="noopener noreferrer" className="social-circle" aria-label="Facebook"><Facebook size={16} /></a>
-                  <a href="https://www.instagram.com/npdigitalsolutions001/" target="_blank" rel="noopener noreferrer" className="social-circle" aria-label="Instagram"><Instagram size={16} /></a>
-                  <a href="https://www.linkedin.com/in/np-digital-solutions-a8b162400/" target="_blank" rel="noopener noreferrer" className="social-circle" aria-label="LinkedIn"><Linkedin size={16} /></a>
-                  <a href="https://github.com/npdigitalsolutions001" target="_blank" rel="noopener noreferrer" className="social-circle" aria-label="GitHub"><Github size={16} /></a>
-                </div>
-              </div>
-
-              {/* Map embed */}
-              <div style={{ background: "#FFFFFF", borderRadius: "20px", overflow: "hidden", border: "1px solid var(--c-slate-100)", boxShadow: "0 20px 50px rgba(15, 23, 42, 0.04)", height: "250px" }}>
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1186.9402846792677!2d75.77138001788163!3d26.902462148173132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db4657e04180d%3A0xd39e8f2a5d295ffe!2sAmbey%20Market%2C%20Jamuna%20Dairy%2C%20Gayatri%20Nagar%2C%20Sodala%2C%20Jaipur%2C%20Rajasthan%20302006!5e0!3m2!1sen!2sin!4v1774947591241!5m2!1sen!2sin" 
-                  width="100%" 
-                  height="100%" 
-                  style={{ border: 0 }} 
-                  allowFullScreen="" 
-                  loading="lazy" 
-                  referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -1198,8 +1317,8 @@ export default function Landing() {
 
         </div>
 
-        <div className="section-container footer-bottom" style={{ padding: "30px 24px 0" }}>
-          <span>© 2026 EduSphere SaaS. All rights reserved.</span>
+        <div className="section-container footer-bottom">
+          <span className="footer-copyright">© 2026 EduSphere SaaS. All rights reserved.</span>
           <div className="footer-bottom-info">
             <span>+91 9509167614</span>
             <span>npdigitalsolutions001@gmail.com</span>
